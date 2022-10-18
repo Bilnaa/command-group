@@ -11,7 +11,7 @@ use crate::{winres::*, CommandGroup, GroupChild};
 impl CommandGroup for Command {
 	fn group_spawn(&mut self) -> Result<GroupChild> {
 		let (job, completion_port) = job_object()?;
-		self.creation_flags(CREATE_SUSPENDED | CREATE_NO_WINDOW)
+		self.creation_flags(CREATE_SUSPENDED | CREATE_NO_WINDOW);
 		let child = self.spawn()?;
 		assign_child(child.as_raw_handle(), job)?;
 
